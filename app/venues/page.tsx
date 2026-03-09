@@ -1,118 +1,176 @@
-import Image from "next/image";
-import type { Metadata } from "next";
+'use client';
 
-export const metadata: Metadata = {
-  title: "Wedding Venues - Tie the Knot Cyprus",
-  description: "Explore stunning wedding venues in Paphos, Cyprus. From beachfront ceremonies to historic estates, find your perfect location.",
-};
+import Image from 'next/image';
+import Link from 'next/link';
 
 export default function Venues() {
   const venues = [
     {
-      name: 'Coral Beach Hotel & Resort',
-      location: 'Coral Bay, Paphos',
-      description: 'Luxury beachfront resort with stunning Mediterranean views, perfect for both intimate and grand celebrations.',
-      features: ['Beach ceremony', 'Indoor/outdoor options', 'Luxury accommodation', 'Full catering'],
-      image: 'https://images.unsplash.com/photo-1520483601560-73e345e7f23e?w=1200&q=80',
+      name: 'Aphrodite Hills Resort',
+      location: 'Kouklia',
+      image: 'https://images.unsplash.com/photo-1519167758481-83f29da8c0c0?w=800&q=80',
+      description: 'Luxury hilltop resort with panoramic Mediterranean views',
     },
     {
-      name: 'Aphrodite Hills Resort',
-      location: 'Kouklia, Paphos',
-      description: 'Spectacular clifftop resort overlooking the mythical birthplace of Aphrodite, offering breathtaking sunset views.',
-      features: ['Panoramic views', 'Championship golf course', 'Multiple venues', 'Villa accommodation'],
-      image: 'https://images.unsplash.com/photo-1505236858219-8359eb29e329?w=1200&q=80',
+      name: 'Almyra Hotel',
+      location: 'Paphos',
+      image: 'https://images.unsplash.com/photo-1566073771259-6a8506099945?w=800&q=80',
+      description: 'Contemporary beachfront hotel with elegant gardens',
     },
     {
       name: 'Annabelle Hotel',
-      location: 'Paphos Harbor',
-      description: 'Award-winning boutique hotel with lush gardens and elegant spaces, ideal for sophisticated celebrations.',
-      features: ['Tropical gardens', 'Waterfront location', 'Gourmet dining', 'Exclusive service'],
-      image: 'https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?w=1200&q=80',
+      location: 'Paphos',
+      image: 'https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?w=800&q=80',
+      description: 'Five-star elegance with stunning tropical gardens',
     },
     {
-      name: 'Kamares Village',
-      location: 'Tala, Paphos',
-      description: 'Traditional stone village with authentic Cypriot charm, perfect for rustic and intimate weddings.',
-      features: ['Authentic Cyprus style', 'Cobblestone courtyards', 'Mountain views', 'Traditional taverna'],
-      image: 'https://images.unsplash.com/photo-1519167758481-83f29da8c2d0?w=1200&q=80',
+      name: 'St. George Hotel',
+      location: 'Chloraka',
+      image: 'https://images.unsplash.com/photo-1445019980597-93fa8acb246c?w=800&q=80',
+      description: 'Clifftop location overlooking the Mediterranean',
     },
     {
-      name: 'Elysium Hotel',
-      location: 'Paphos Seafront',
-      description: 'Elegant five-star hotel with classical architecture and direct beach access, offering timeless sophistication.',
-      features: ['Private beach', 'Byzantine architecture', 'Rooftop terrace', 'Spa facilities'],
-      image: 'https://images.unsplash.com/photo-1566073771259-6a8506099945?w=1200&q=80',
+      name: 'Columbia Beach Resort',
+      location: 'Pissouri',
+      image: 'https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=800&q=80',
+      description: 'Boutique beachfront resort with romantic ambiance',
     },
     {
-      name: 'Private Villas & Estates',
-      location: 'Throughout Paphos',
-      description: 'Exclusive private properties with pools, gardens, and stunning views for intimate, personalized celebrations.',
-      features: ['Complete privacy', 'Customizable setup', 'Pool & gardens', 'Flexible arrangements'],
-      image: 'https://images.unsplash.com/photo-1523217582562-09d0def993a6?w=1200&q=80',
+      name: 'Secret Valley Golf Club',
+      location: 'Petra tou Romiou',
+      image: 'https://images.unsplash.com/photo-1464093515883-ec948246accb?w=800&q=80',
+      description: 'Hidden vineyard venue with panoramic countryside views',
     },
   ];
 
   return (
-    <main className="pt-20">
-      {/* Hero */}
-      <section className="relative h-[60vh] flex items-center justify-center text-white">
-        <Image
-          src="https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?w=1920&q=80"
-          alt="Cyprus wedding venue"
-          fill
-          className="object-cover"
+    <main>
+      {/* HERO */}
+      <section
+        style={{
+          position: 'relative',
+          height: '50vh',
+          minHeight: '400px',
+          backgroundImage: 'url("https://images.unsplash.com/photo-1519167758481-83f29da8c0c0?w=1920&q=80")',
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+        }}
+      >
+        <div
+          style={{
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            background: 'linear-gradient(to bottom, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.5) 100%)',
+          }}
         />
-        <div className="absolute inset-0 bg-black/40" />
-        <div className="relative z-10 text-center px-6">
-          <h1 className="text-6xl md:text-7xl mb-4 font-light" style={{ fontFamily: 'Cormorant Garamond, serif' }}>
-            Paphos Venues
-          </h1>
-          <p className="text-xl font-light tracking-wide">Discover your perfect wedding location</p>
+        <div
+          style={{
+            position: 'absolute',
+            top: '50%',
+            left: '50%',
+            transform: 'translate(-50%, -50%)',
+            textAlign: 'center',
+            color: 'white',
+            width: '100%',
+            padding: '0 24px',
+          }}
+        >
+          <div className="eyebrow" style={{ color: 'white', marginBottom: '16px' }}>
+            DISCOVER
+          </div>
+          <h1 style={{ color: 'white' }}>Paphos Wedding Venues</h1>
         </div>
       </section>
 
-      {/* Intro */}
-      <section className="py-16 px-6 bg-white">
-        <div className="max-w-4xl mx-auto text-center">
-          <p className="text-lg leading-relaxed text-[#2C2C2C]/80">
-            Paphos offers an incredible variety of wedding venues, each with its own unique character and charm.
-            From five-star resorts with pristine beaches to intimate hillside villas with panoramic views, we'll help
-            you find the perfect setting for your special day.
+      {/* INTRO */}
+      <section className="section" style={{ background: '#FEFCF8', textAlign: 'center' }}>
+        <div className="container" style={{ maxWidth: '800px' }}>
+          <p style={{ fontSize: '19px', lineHeight: '1.8', marginBottom: '24px' }}>
+            Paphos offers some of the Mediterranean's most stunning wedding venues — from elegant beachfront resorts to historic estates and hidden vineyard settings.
+          </p>
+          <div className="decorative-line" style={{ margin: '32px auto' }} />
+          <p>
+            As an independent planner, we work with venues across Paphos to find the perfect match for your vision and budget — with no bias, no commissions, just honest recommendations.
           </p>
         </div>
       </section>
 
-      {/* Venues Grid */}
-      <section className="py-16 px-6 bg-[#FAF7F2]">
-        <div className="max-w-7xl mx-auto">
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {venues.map((venue) => (
+      {/* VENUES GRID */}
+      <section style={{ background: '#F5F2EE', padding: '80px 0' }}>
+        <div className="container">
+          <div
+            style={{
+              display: 'grid',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
+              gap: '40px',
+            }}
+            className="venues-grid"
+          >
+            {venues.map((venue, index) => (
               <div
-                key={venue.name}
-                className="bg-white overflow-hidden transition-all duration-300 hover:shadow-2xl group"
+                key={index}
+                style={{
+                  position: 'relative',
+                  overflow: 'hidden',
+                  background: 'white',
+                  cursor: 'pointer',
+                  transition: 'transform 0.3s ease',
+                }}
+                className="venue-card"
               >
-                <div className="relative h-[300px] overflow-hidden">
+                <div style={{ position: 'relative', height: '400px' }}>
                   <Image
                     src={venue.image}
                     alt={venue.name}
                     fill
-                    className="object-cover transition-transform duration-500 group-hover:scale-110"
+                    style={{ objectFit: 'cover' }}
                   />
-                </div>
-                <div className="p-8">
-                  <h3 className="text-3xl mb-2 text-[#2C2C2C]" style={{ fontFamily: 'Cormorant Garamond, serif' }}>
-                    {venue.name}
-                  </h3>
-                  <p className="text-sm uppercase tracking-wider text-[#C4956A] mb-4">{venue.location}</p>
-                  <p className="text-[#2C2C2C]/80 leading-relaxed mb-6">{venue.description}</p>
-                  <ul className="space-y-2">
-                    {venue.features.map((feature) => (
-                      <li key={feature} className="flex items-center gap-2 text-sm text-[#2C2C2C]/70">
-                        <span className="text-[#4A6741]">✓</span>
-                        <span>{feature}</span>
-                      </li>
-                    ))}
-                  </ul>
+                  <div
+                    style={{
+                      position: 'absolute',
+                      bottom: 0,
+                      left: 0,
+                      right: 0,
+                      background: 'linear-gradient(to top, rgba(0,0,0,0.8) 0%, transparent 100%)',
+                      padding: '60px 24px 24px',
+                      color: 'white',
+                    }}
+                  >
+                    <h3
+                      style={{
+                        fontFamily: 'var(--font-cormorant)',
+                        fontSize: '24px',
+                        color: 'white',
+                        marginBottom: '8px',
+                      }}
+                    >
+                      {venue.name}
+                    </h3>
+                    <p
+                      style={{
+                        fontFamily: 'var(--font-raleway)',
+                        fontSize: '12px',
+                        letterSpacing: '0.1em',
+                        textTransform: 'uppercase',
+                        color: '#C4956A',
+                        marginBottom: '8px',
+                      }}
+                    >
+                      {venue.location}
+                    </p>
+                    <p
+                      style={{
+                        fontSize: '14px',
+                        color: 'rgba(255,255,255,0.9)',
+                        lineHeight: '1.6',
+                      }}
+                    >
+                      {venue.description}
+                    </p>
+                  </div>
                 </div>
               </div>
             ))}
@@ -120,48 +178,82 @@ export default function Venues() {
         </div>
       </section>
 
-      {/* Legal Info */}
-      <section className="py-24 px-6 bg-white">
-        <div className="max-w-4xl mx-auto">
-          <h2 className="text-5xl mb-8 text-center text-[#2C2C2C]" style={{ fontFamily: 'Cormorant Garamond, serif' }}>
-            Getting Married in Cyprus
-          </h2>
-          <div className="space-y-6 text-lg leading-relaxed text-[#2C2C2C]/80">
-            <p>
-              Cyprus is one of the most popular destinations for weddings in Europe, offering a straightforward legal
-              process and stunning locations. We guide you through every step of the paperwork and requirements.
-            </p>
-            <p>
-              Whether you're planning a legal ceremony, a blessing, or a symbolic celebration, we ensure everything
-              is handled smoothly and professionally. Our experience with local authorities and venues means your
-              wedding planning is stress-free.
-            </p>
-            <p>
-              Most venues require booking 12-18 months in advance for peak season (May-October), though last-minute
-              arrangements are sometimes possible. We recommend contacting us as early as possible to secure your
-              preferred date and location.
-            </p>
+      {/* WHY WORK WITH US */}
+      <section className="section" style={{ background: '#FEFCF8' }}>
+        <div className="container" style={{ maxWidth: '900px', textAlign: 'center' }}>
+          <div className="eyebrow" style={{ marginBottom: '16px' }}>OUR APPROACH</div>
+          <h2 style={{ marginBottom: '40px' }}>Why Work With an Independent Planner?</h2>
+
+          <div
+            style={{
+              display: 'grid',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))',
+              gap: '40px',
+              textAlign: 'left',
+              marginTop: '60px',
+            }}
+          >
+            <div>
+              <h3 style={{ fontSize: '20px', marginBottom: '16px', color: '#7D9B76' }}>
+                No Venue Bias
+              </h3>
+              <p style={{ fontSize: '15px', lineHeight: '1.8' }}>
+                We don't receive commissions from venues, so our recommendations are based solely on what's right for you.
+              </p>
+            </div>
+
+            <div>
+              <h3 style={{ fontSize: '20px', marginBottom: '16px', color: '#7D9B76' }}>
+                Full Transparency
+              </h3>
+              <p style={{ fontSize: '15px', lineHeight: '1.8' }}>
+                Clear pricing, honest advice, and complete transparency throughout your planning journey.
+              </p>
+            </div>
+
+            <div>
+              <h3 style={{ fontSize: '20px', marginBottom: '16px', color: '#7D9B76' }}>
+                Exclusive Access
+              </h3>
+              <p style={{ fontSize: '15px', lineHeight: '1.8' }}>
+                Our relationships across Paphos unlock venues and suppliers you might not find on your own.
+              </p>
+            </div>
           </div>
         </div>
       </section>
 
       {/* CTA */}
-      <section className="py-24 px-6 bg-[#4A6741] text-white">
-        <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-5xl mb-8" style={{ fontFamily: 'Cormorant Garamond, serif' }}>
-            Let's Find Your Perfect Venue
-          </h2>
-          <p className="text-lg mb-10 text-white/90 leading-relaxed">
-            Schedule a consultation to discuss your vision, and we'll recommend the ideal venues for your celebration.
+      <section
+        style={{
+          background: '#7D9B76',
+          padding: '100px 24px',
+          textAlign: 'center',
+          color: 'white',
+        }}
+      >
+        <div className="container" style={{ maxWidth: '700px' }}>
+          <h2 style={{ color: 'white', marginBottom: '24px' }}>Ready to Find Your Perfect Venue?</h2>
+          <p style={{ marginBottom: '32px', color: 'white', opacity: 0.95 }}>
+            Let's discuss your vision and explore the best venue options for your Cyprus wedding.
           </p>
-          <a
-            href="/contact"
-            className="inline-block bg-white text-[#4A6741] hover:bg-[#FAF7F2] px-10 py-4 text-sm uppercase tracking-widest transition-all duration-300"
-          >
-            Contact Us
-          </a>
+          <Link href="/contact">
+            <button className="btn-white">Get in Touch</button>
+          </Link>
         </div>
       </section>
+
+      {/* RESPONSIVE STYLES */}
+      <style jsx>{`
+        @media (max-width: 768px) {
+          .venues-grid {
+            grid-template-columns: 1fr !important;
+          }
+        }
+        .venue-card:hover {
+          transform: translateY(-4px);
+        }
+      `}</style>
     </main>
   );
 }

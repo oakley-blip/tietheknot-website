@@ -1,27 +1,21 @@
 'use client';
 
 import { useState } from 'react';
-import Image from "next/image";
-
-// Note: Metadata is exported from layout.tsx for client components
 
 export default function Contact() {
   const [formData, setFormData] = useState({
-    name: '',
+    firstName: '',
+    lastName: '',
     email: '',
+    phone: '',
     weddingDate: '',
     message: '',
   });
-  const [submitted, setSubmitted] = useState(false);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    setSubmitted(true);
-    // In production, this would send to an API endpoint
-    setTimeout(() => {
-      setSubmitted(false);
-      setFormData({ name: '', email: '', weddingDate: '', message: '' });
-    }, 3000);
+    console.log('Form submitted:', formData);
+    alert('Thank you for your inquiry! We will be in touch soon.');
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -32,218 +26,300 @@ export default function Contact() {
   };
 
   return (
-    <main className="pt-20">
-      {/* Hero */}
-      <section className="relative h-[50vh] flex items-center justify-center text-white">
-        <Image
-          src="https://images.unsplash.com/photo-1522673607200-164d1b6ce486?w=1920&q=80"
-          alt="Contact us"
-          fill
-          className="object-cover"
+    <main>
+      {/* HERO */}
+      <section
+        style={{
+          position: 'relative',
+          height: '50vh',
+          minHeight: '400px',
+          backgroundImage: 'url("https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=1920&q=80")',
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+        }}
+      >
+        <div
+          style={{
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            background: 'linear-gradient(to bottom, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.5) 100%)',
+          }}
         />
-        <div className="absolute inset-0 bg-black/50" />
-        <div className="relative z-10 text-center px-6">
-          <h1 className="text-6xl md:text-7xl mb-4 font-light" style={{ fontFamily: 'Cormorant Garamond, serif' }}>
-            Get in Touch
-          </h1>
-          <p className="text-xl font-light tracking-wide">Let's start planning your dream wedding</p>
+        <div
+          style={{
+            position: 'absolute',
+            top: '50%',
+            left: '50%',
+            transform: 'translate(-50%, -50%)',
+            textAlign: 'center',
+            color: 'white',
+            width: '100%',
+            padding: '0 24px',
+          }}
+        >
+          <div className="eyebrow" style={{ color: 'white', marginBottom: '16px' }}>
+            LET'S TALK
+          </div>
+          <h1 style={{ color: 'white' }}>Get in Touch</h1>
         </div>
       </section>
 
-      {/* Contact Form & Info */}
-      <section className="py-24 px-6 bg-[#FAF7F2]">
-        <div className="max-w-6xl mx-auto">
-          <div className="grid md:grid-cols-2 gap-16">
-            {/* Contact Form */}
-            <div className="bg-white p-10">
-              <h2 className="text-4xl mb-8 text-[#2C2C2C]" style={{ fontFamily: 'Cormorant Garamond, serif' }}>
-                Send Us a Message
-              </h2>
-              {submitted ? (
-                <div className="bg-[#4A6741] text-white p-6 text-center">
-                  <p className="text-xl mb-2" style={{ fontFamily: 'Cormorant Garamond, serif' }}>
-                    Thank you for contacting us!
-                  </p>
-                  <p className="text-sm">We'll get back to you within 24 hours.</p>
-                </div>
-              ) : (
-                <form onSubmit={handleSubmit} className="space-y-6">
-                  <div>
-                    <label htmlFor="name" className="block text-sm uppercase tracking-wider text-[#2C2C2C] mb-2">
-                      Your Name *
-                    </label>
-                    <input
-                      type="text"
-                      id="name"
-                      name="name"
-                      value={formData.name}
-                      onChange={handleChange}
-                      required
-                      className="w-full px-4 py-3 border border-[#2C2C2C]/20 focus:border-[#4A6741] focus:outline-none transition-colors"
-                    />
-                  </div>
-
-                  <div>
-                    <label htmlFor="email" className="block text-sm uppercase tracking-wider text-[#2C2C2C] mb-2">
-                      Email Address *
-                    </label>
-                    <input
-                      type="email"
-                      id="email"
-                      name="email"
-                      value={formData.email}
-                      onChange={handleChange}
-                      required
-                      className="w-full px-4 py-3 border border-[#2C2C2C]/20 focus:border-[#4A6741] focus:outline-none transition-colors"
-                    />
-                  </div>
-
-                  <div>
-                    <label htmlFor="weddingDate" className="block text-sm uppercase tracking-wider text-[#2C2C2C] mb-2">
-                      Wedding Date
-                    </label>
-                    <input
-                      type="date"
-                      id="weddingDate"
-                      name="weddingDate"
-                      value={formData.weddingDate}
-                      onChange={handleChange}
-                      className="w-full px-4 py-3 border border-[#2C2C2C]/20 focus:border-[#4A6741] focus:outline-none transition-colors"
-                    />
-                  </div>
-
-                  <div>
-                    <label htmlFor="message" className="block text-sm uppercase tracking-wider text-[#2C2C2C] mb-2">
-                      Tell Us About Your Vision *
-                    </label>
-                    <textarea
-                      id="message"
-                      name="message"
-                      value={formData.message}
-                      onChange={handleChange}
-                      required
-                      rows={6}
-                      className="w-full px-4 py-3 border border-[#2C2C2C]/20 focus:border-[#4A6741] focus:outline-none transition-colors resize-none"
-                    />
-                  </div>
-
-                  <button
-                    type="submit"
-                    className="w-full bg-[#C4956A] hover:bg-[#B38558] text-white px-10 py-4 text-sm uppercase tracking-widest transition-all duration-300"
-                  >
-                    Send Message
-                  </button>
-                </form>
-              )}
-            </div>
-
-            {/* Contact Information */}
+      {/* CONTACT SECTION */}
+      <section className="section" style={{ background: '#FEFCF8' }}>
+        <div className="container">
+          <div
+            style={{
+              display: 'grid',
+              gridTemplateColumns: '1fr 1fr',
+              gap: '80px',
+            }}
+            className="contact-grid"
+          >
+            {/* LEFT COLUMN - FORM */}
             <div>
-              <h2 className="text-4xl mb-8 text-[#2C2C2C]" style={{ fontFamily: 'Cormorant Garamond, serif' }}>
-                Contact Information
-              </h2>
+              <h2 style={{ marginBottom: '24px' }}>Schedule a Consultation</h2>
+              <p style={{ marginBottom: '40px' }}>
+                Fill out the form below and we'll get back to you within 24 hours to discuss your Cyprus wedding.
+              </p>
 
-              <div className="space-y-8 mb-12">
-                <div>
-                  <h3 className="text-sm uppercase tracking-wider text-[#C4956A] mb-3">Phone</h3>
-                  <a href="tel:+35799123456" className="text-2xl text-[#2C2C2C] hover:text-[#4A6741] transition-colors">
-                    +357 99 123456
-                  </a>
+              <form onSubmit={handleSubmit}>
+                <div style={{ marginBottom: '32px' }}>
+                  <input
+                    type="text"
+                    name="firstName"
+                    placeholder="First Name"
+                    required
+                    value={formData.firstName}
+                    onChange={handleChange}
+                    style={{
+                      width: '100%',
+                      padding: '12px 0',
+                      border: 'none',
+                      borderBottom: '1px solid #E0E0E0',
+                      background: 'transparent',
+                      fontSize: '15px',
+                      fontFamily: 'var(--font-raleway)',
+                      fontWeight: 300,
+                      color: '#1C1C1C',
+                      outline: 'none',
+                      transition: 'border-color 0.3s ease',
+                    }}
+                    onFocus={(e) => (e.target.style.borderBottomColor = '#7D9B76')}
+                    onBlur={(e) => (e.target.style.borderBottomColor = '#E0E0E0')}
+                  />
                 </div>
 
-                <div>
-                  <h3 className="text-sm uppercase tracking-wider text-[#C4956A] mb-3">Email</h3>
-                  <a href="mailto:info@tietheknotcyprus.net" className="text-2xl text-[#2C2C2C] hover:text-[#4A6741] transition-colors break-all">
-                    info@tietheknotcyprus.net
-                  </a>
+                <div style={{ marginBottom: '32px' }}>
+                  <input
+                    type="text"
+                    name="lastName"
+                    placeholder="Last Name"
+                    required
+                    value={formData.lastName}
+                    onChange={handleChange}
+                    style={{
+                      width: '100%',
+                      padding: '12px 0',
+                      border: 'none',
+                      borderBottom: '1px solid #E0E0E0',
+                      background: 'transparent',
+                      fontSize: '15px',
+                      fontFamily: 'var(--font-raleway)',
+                      fontWeight: 300,
+                      color: '#1C1C1C',
+                      outline: 'none',
+                      transition: 'border-color 0.3s ease',
+                    }}
+                    onFocus={(e) => (e.target.style.borderBottomColor = '#7D9B76')}
+                    onBlur={(e) => (e.target.style.borderBottomColor = '#E0E0E0')}
+                  />
                 </div>
 
-                <div>
-                  <h3 className="text-sm uppercase tracking-wider text-[#C4956A] mb-3">Location</h3>
-                  <p className="text-lg text-[#2C2C2C]/80">
-                    Paphos, Cyprus
-                  </p>
+                <div style={{ marginBottom: '32px' }}>
+                  <input
+                    type="email"
+                    name="email"
+                    placeholder="Email Address"
+                    required
+                    value={formData.email}
+                    onChange={handleChange}
+                    style={{
+                      width: '100%',
+                      padding: '12px 0',
+                      border: 'none',
+                      borderBottom: '1px solid #E0E0E0',
+                      background: 'transparent',
+                      fontSize: '15px',
+                      fontFamily: 'var(--font-raleway)',
+                      fontWeight: 300,
+                      color: '#1C1C1C',
+                      outline: 'none',
+                      transition: 'border-color 0.3s ease',
+                    }}
+                    onFocus={(e) => (e.target.style.borderBottomColor = '#7D9B76')}
+                    onBlur={(e) => (e.target.style.borderBottomColor = '#E0E0E0')}
+                  />
                 </div>
 
-                <div>
-                  <h3 className="text-sm uppercase tracking-wider text-[#C4956A] mb-3">Office Hours</h3>
-                  <p className="text-lg text-[#2C2C2C]/80">
-                    Monday - Saturday<br />
-                    9:00 AM - 6:00 PM (EET)
-                  </p>
-                  <p className="text-sm text-[#2C2C2C]/60 mt-2">
-                    Weekend and evening consultations available by appointment
-                  </p>
+                <div style={{ marginBottom: '32px' }}>
+                  <input
+                    type="tel"
+                    name="phone"
+                    placeholder="Phone Number"
+                    value={formData.phone}
+                    onChange={handleChange}
+                    style={{
+                      width: '100%',
+                      padding: '12px 0',
+                      border: 'none',
+                      borderBottom: '1px solid #E0E0E0',
+                      background: 'transparent',
+                      fontSize: '15px',
+                      fontFamily: 'var(--font-raleway)',
+                      fontWeight: 300,
+                      color: '#1C1C1C',
+                      outline: 'none',
+                      transition: 'border-color 0.3s ease',
+                    }}
+                    onFocus={(e) => (e.target.style.borderBottomColor = '#7D9B76')}
+                    onBlur={(e) => (e.target.style.borderBottomColor = '#E0E0E0')}
+                  />
                 </div>
+
+                <div style={{ marginBottom: '32px' }}>
+                  <input
+                    type="date"
+                    name="weddingDate"
+                    placeholder="Preferred Wedding Date"
+                    value={formData.weddingDate}
+                    onChange={handleChange}
+                    style={{
+                      width: '100%',
+                      padding: '12px 0',
+                      border: 'none',
+                      borderBottom: '1px solid #E0E0E0',
+                      background: 'transparent',
+                      fontSize: '15px',
+                      fontFamily: 'var(--font-raleway)',
+                      fontWeight: 300,
+                      color: '#1C1C1C',
+                      outline: 'none',
+                      transition: 'border-color 0.3s ease',
+                    }}
+                    onFocus={(e) => (e.target.style.borderBottomColor = '#7D9B76')}
+                    onBlur={(e) => (e.target.style.borderBottomColor = '#E0E0E0')}
+                  />
+                </div>
+
+                <div style={{ marginBottom: '40px' }}>
+                  <textarea
+                    name="message"
+                    placeholder="Tell us about your vision..."
+                    rows={5}
+                    required
+                    value={formData.message}
+                    onChange={handleChange}
+                    style={{
+                      width: '100%',
+                      padding: '12px 0',
+                      border: 'none',
+                      borderBottom: '1px solid #E0E0E0',
+                      background: 'transparent',
+                      fontSize: '15px',
+                      fontFamily: 'var(--font-raleway)',
+                      fontWeight: 300,
+                      color: '#1C1C1C',
+                      outline: 'none',
+                      resize: 'vertical',
+                      transition: 'border-color 0.3s ease',
+                    }}
+                    onFocus={(e) => (e.target.style.borderBottomColor = '#7D9B76')}
+                    onBlur={(e) => (e.target.style.borderBottomColor = '#E0E0E0')}
+                  />
+                </div>
+
+                <button type="submit" className="btn-primary" style={{ width: '100%' }}>
+                  Send Message
+                </button>
+              </form>
+            </div>
+
+            {/* RIGHT COLUMN - CONTACT INFO */}
+            <div>
+              <h2 style={{ marginBottom: '24px' }}>Contact Information</h2>
+              <p style={{ marginBottom: '40px' }}>
+                We'd love to hear about your wedding plans. Reach out via the form or contact us directly using the details below.
+              </p>
+
+              <div style={{ marginBottom: '40px' }}>
+                <h3 style={{ fontSize: '18px', marginBottom: '12px', color: '#7D9B76' }}>Email</h3>
+                <a href="mailto:info@tietheknotcyprus.net" className="link-sage" style={{ fontSize: '16px' }}>
+                  info@tietheknotcyprus.net
+                </a>
               </div>
 
-              <div className="bg-[#4A6741] text-white p-8">
-                <h3 className="text-2xl mb-4" style={{ fontFamily: 'Cormorant Garamond, serif' }}>
-                  Why Choose Us
-                </h3>
-                <ul className="space-y-3 text-white/90">
-                  <li className="flex items-start gap-2">
-                    <span className="mt-1">✓</span>
-                    <span>35+ years combined experience</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="mt-1">✓</span>
-                    <span>Award-winning planning and photography</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="mt-1">✓</span>
-                    <span>Exclusive access to premier venues</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="mt-1">✓</span>
-                    <span>Personalized, stress-free service</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="mt-1">✓</span>
-                    <span>Local expertise and connections</span>
-                  </li>
-                </ul>
+              <div style={{ marginBottom: '40px' }}>
+                <h3 style={{ fontSize: '18px', marginBottom: '12px', color: '#7D9B76' }}>Phone</h3>
+                <a href="tel:+35799123456" className="link-sage" style={{ fontSize: '16px' }}>
+                  +357 99 123456
+                </a>
+              </div>
+
+              <div style={{ marginBottom: '40px' }}>
+                <h3 style={{ fontSize: '18px', marginBottom: '12px', color: '#7D9B76' }}>Location</h3>
+                <p style={{ fontSize: '16px', lineHeight: '1.8' }}>
+                  Paphos, Cyprus
+                </p>
+              </div>
+
+              <div className="decorative-line" style={{ marginBottom: '32px' }} />
+
+              <div
+                style={{
+                  background: '#F5F2EE',
+                  padding: '32px',
+                  borderLeft: '3px solid #7D9B76',
+                }}
+              >
+                <h3 style={{ fontSize: '20px', marginBottom: '16px' }}>Free Consultation</h3>
+                <p style={{ fontSize: '15px', lineHeight: '1.8' }}>
+                  Every journey begins with a conversation. We offer complimentary consultations to discuss your vision, answer questions, and explore how we can bring your Cyprus wedding to life.
+                </p>
+              </div>
+
+              {/* Map Placeholder */}
+              <div
+                style={{
+                  marginTop: '40px',
+                  height: '300px',
+                  background: '#E0E0E0',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  color: '#8A8A8A',
+                  fontFamily: 'var(--font-raleway)',
+                  fontSize: '14px',
+                }}
+              >
+                [Map of Paphos, Cyprus]
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* FAQ */}
-      <section className="py-24 px-6 bg-white">
-        <div className="max-w-4xl mx-auto">
-          <h2 className="text-5xl mb-12 text-center text-[#2C2C2C]" style={{ fontFamily: 'Cormorant Garamond, serif' }}>
-            Frequently Asked Questions
-          </h2>
-          <div className="space-y-8">
-            {[
-              {
-                q: 'How far in advance should we book?',
-                a: 'We recommend contacting us 12-18 months before your desired wedding date, especially for peak season (May-October). However, we can often accommodate shorter timeframes.',
-              },
-              {
-                q: 'Do you work with international couples?',
-                a: 'Absolutely! The majority of our clients are international couples. We handle all local arrangements and guide you through the Cyprus wedding requirements.',
-              },
-              {
-                q: 'What is included in your services?',
-                a: 'Our services are fully customizable. We offer everything from complete wedding planning to day-of coordination, venue finding, and photography. Contact us to discuss a package tailored to your needs.',
-              },
-              {
-                q: 'Can we visit venues before booking?',
-                a: 'Yes! We arrange venue tours and can accompany you to provide expert guidance. Virtual tours are also available for couples planning from abroad.',
-              },
-            ].map((faq) => (
-              <div key={faq.q} className="border-b border-[#2C2C2C]/10 pb-6">
-                <h3 className="text-xl mb-3 text-[#2C2C2C]" style={{ fontFamily: 'Cormorant Garamond, serif' }}>
-                  {faq.q}
-                </h3>
-                <p className="text-[#2C2C2C]/80 leading-relaxed">{faq.a}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      {/* RESPONSIVE STYLES */}
+      <style jsx>{`
+        @media (max-width: 768px) {
+          .contact-grid {
+            grid-template-columns: 1fr !important;
+            gap: 60px !important;
+          }
+        }
+      `}</style>
     </main>
   );
 }

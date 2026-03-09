@@ -1,184 +1,547 @@
-import Link from "next/link";
-import type { Metadata } from "next";
+'use client';
 
-export const metadata: Metadata = {
-  title: "Tie the Knot Cyprus - Luxury Wedding Planning in Paphos",
-  description: "Award-winning bespoke wedding planning and photography in Paphos, Cyprus. Let Vicki and Lee create your dream Mediterranean wedding.",
-};
+import Image from 'next/image';
+import Link from 'next/link';
 
 export default function Home() {
   return (
     <main>
-      {/* Hero Section */}
+      {/* SECTION 1: HERO */}
       <section
-        className="relative h-screen flex items-center justify-center text-white"
         style={{
-          backgroundImage: 'linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.55)), url(https://images.unsplash.com/photo-1519741497674-611481863552?w=1920&q=80)',
+          position: 'relative',
+          height: '100vh',
+          backgroundImage: 'url("https://images.unsplash.com/photo-1519741497674-611481863552?w=1920&q=80")',
           backgroundSize: 'cover',
-          backgroundPosition: 'center',
-          backgroundRepeat: 'no-repeat'
+          backgroundPosition: 'center 30%',
         }}
       >
-        <div className="relative z-10 text-center px-6 max-w-4xl">
+        <div
+          style={{
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            background: 'linear-gradient(to bottom, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.45) 100%)',
+          }}
+        />
+        <div
+          style={{
+            position: 'absolute',
+            top: '50%',
+            left: '50%',
+            transform: 'translate(-50%, -50%)',
+            textAlign: 'center',
+            color: 'white',
+            width: '100%',
+            padding: '0 24px',
+          }}
+        >
+          <div
+            className="animate-fade-in-up"
+            style={{
+              fontFamily: 'var(--font-raleway)',
+              fontSize: '11px',
+              letterSpacing: '0.2em',
+              textTransform: 'uppercase',
+              marginBottom: '24px',
+            }}
+          >
+            PAPHOS, CYPRUS
+          </div>
           <h1
-            className="text-5xl md:text-6xl lg:text-7xl mb-6 font-light tracking-wide animate-fade-in"
-            style={{ fontFamily: 'Cormorant Garamond, serif' }}
+            className="display-heading animate-fade-in-up animate-delay-100"
+            style={{
+              color: 'white',
+              marginBottom: '20px',
+            }}
           >
-            Your Dream Wedding in Paradise
+            Your Love Story,<br />Beautifully Told.
           </h1>
-          <p className="text-lg md:text-xl lg:text-2xl mb-10 font-light tracking-wide max-w-3xl mx-auto animate-fade-in-delay">
-            Bespoke wedding planning in the heart of Paphos, Cyprus
-          </p>
-          <Link
-            href="/contact"
-            className="inline-block border-2 border-white text-white hover:bg-white hover:text-[#2C2C2C] px-10 py-4 text-sm uppercase tracking-widest transition-all duration-300 animate-fade-in-delay-2"
+          <p
+            className="animate-fade-in-up animate-delay-200"
+            style={{
+              fontFamily: 'var(--font-raleway)',
+              fontSize: '16px',
+              fontWeight: 300,
+              letterSpacing: '0.05em',
+              opacity: 0.9,
+              marginBottom: '32px',
+            }}
           >
-            Start Planning
+            Award-winning wedding planning in the heart of the Mediterranean
+          </p>
+          <Link href="/contact">
+            <button className="btn-white animate-fade-in-up animate-delay-300">
+              Begin Your Journey
+            </button>
           </Link>
         </div>
       </section>
 
-      {/* Introduction */}
-      <section className="py-16 md:py-32 px-6 bg-white">
-        <div className="max-w-[1200px] mx-auto px-4 md:px-20">
-          {/* Decorative separator */}
-          <div className="w-full h-px bg-[#C4956A] mb-12 md:mb-16"></div>
-
-          {/* Two column layout on desktop */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16">
-            {/* Left column - Headline/Quote */}
-            <div className="text-center md:text-left">
-              <h2 className="text-4xl md:text-[52px] leading-tight text-[#2C2C2C]" style={{ fontFamily: 'Cormorant Garamond, serif' }}>
-                Welcome to Tie the Knot Cyprus
-              </h2>
+      {/* SECTION 2: INTRO */}
+      <section className="section" style={{ background: '#FEFCF8' }}>
+        <div className="container">
+          <div
+            style={{
+              display: 'grid',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
+              gap: '80px',
+              alignItems: 'center',
+            }}
+          >
+            {/* Left Column */}
+            <div>
+              <div
+                style={{
+                  fontSize: '120px',
+                  fontFamily: 'var(--font-cormorant)',
+                  color: '#C4956A',
+                  lineHeight: '1',
+                  marginBottom: '20px',
+                }}
+              >
+                &ldquo;
+              </div>
+              <p
+                style={{
+                  fontFamily: 'var(--font-cormorant)',
+                  fontStyle: 'italic',
+                  fontSize: '32px',
+                  lineHeight: '1.4',
+                  color: '#1C1C1C',
+                }}
+              >
+                Creating weddings as unique as your love story — since 1989.
+              </p>
             </div>
 
-            {/* Right column - Body text */}
-            <div className="text-center md:text-left space-y-6">
-              <p className="text-lg leading-[1.8] text-[#2C2C2C]/80">
-                We are Vicki and Lee, your dedicated wedding planning team in beautiful Paphos. With over 35 years of combined experience,
-                we specialize in creating bespoke, unforgettable weddings that reflect your unique love story against the stunning backdrop
-                of the Mediterranean.
+            {/* Right Column */}
+            <div>
+              <p style={{ marginBottom: '24px' }}>
+                Tie the Knot Cyprus is Vicki and Lee — a husband and wife team with a collective 35 years in the events industry. Based in beautiful Paphos, we bring together award-winning wedding planning and world-class photography to create your perfect day.
               </p>
-              <p className="text-lg leading-[1.8] text-[#2C2C2C]/80">
-                From intimate beach ceremonies to grand celebrations at historic venues, we handle every detail with care,
-                creativity, and professionalism.
+              <div className="decorative-line" />
+              <p>
+                Every wedding we plan is bespoke, personal, and unforgettable.
               </p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Services Grid */}
-      <section className="py-16 md:py-32 px-6 bg-[#FAF7F2]">
-        <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-16">
-            <p className="text-sm uppercase tracking-[0.1em] text-[#8A7E72] mb-4">What We Offer</p>
-            <h2 className="text-4xl md:text-5xl text-[#2C2C2C]" style={{ fontFamily: 'Cormorant Garamond, serif' }}>
-              How We Help
-            </h2>
+      {/* SECTION 3: SERVICES */}
+      {/* Service 1: Bespoke Wedding Planning */}
+      <section style={{ background: '#FEFCF8' }}>
+        <div
+          style={{
+            display: 'grid',
+            gridTemplateColumns: '1fr 1fr',
+            maxWidth: '1280px',
+            margin: '0 auto',
+          }}
+          className="service-row"
+        >
+          {/* Image Left */}
+          <div style={{ position: 'relative', height: '520px' }} className="service-image">
+            <Image
+              src="https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?w=800&q=80"
+              alt="Bespoke Wedding Planning"
+              fill
+              style={{ objectFit: 'cover' }}
+            />
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
-            {/* Bespoke Planning */}
-            <div className="bg-white p-8 text-center border border-[#E8E0D5] transition-all duration-300 hover:shadow-lg">
-              <div className="w-12 h-12 mx-auto mb-6">
-                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full text-[#4A6741]">
-                  <circle cx="12" cy="8" r="4" stroke="currentColor" strokeWidth="1.5" fill="none"/>
-                  <path d="M12 12L15 18H9L12 12Z" stroke="currentColor" strokeWidth="1.5" fill="none" strokeLinejoin="round"/>
-                  <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="1.5" fill="none"/>
-                </svg>
-              </div>
-              <h3 className="text-2xl mb-4 text-[#4A6741]" style={{ fontFamily: 'Cormorant Garamond, serif' }}>
-                Bespoke Planning
-              </h3>
-              <p className="text-[#2C2C2C]/70 leading-relaxed text-base">Complete wedding design and coordination tailored to your vision, from concept to execution.</p>
-            </div>
-
-            {/* Venue Finding */}
-            <div className="bg-white p-8 text-center border border-[#E8E0D5] transition-all duration-300 hover:shadow-lg">
-              <div className="w-12 h-12 mx-auto mb-6">
-                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full text-[#4A6741]">
-                  <path d="M3 21V9L12 3L21 9V21" stroke="currentColor" strokeWidth="1.5" fill="none" strokeLinecap="round" strokeLinejoin="round"/>
-                  <path d="M9 21V12H15V21" stroke="currentColor" strokeWidth="1.5" fill="none" strokeLinecap="round"/>
-                  <path d="M12 3C12 3 14 5 16 5C18 5 19 4 19 4" stroke="currentColor" strokeWidth="1.5" fill="none" strokeLinecap="round"/>
-                </svg>
-              </div>
-              <h3 className="text-2xl mb-4 text-[#4A6741]" style={{ fontFamily: 'Cormorant Garamond, serif' }}>
-                Venue Finding
-              </h3>
-              <p className="text-[#2C2C2C]/70 leading-relaxed text-base">Access to the most stunning wedding venues across Paphos, from beachfront to historic estates.</p>
-            </div>
-
-            {/* Award-Winning Photography */}
-            <div className="bg-white p-8 text-center border border-[#E8E0D5] transition-all duration-300 hover:shadow-lg">
-              <div className="w-12 h-12 mx-auto mb-6">
-                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full text-[#4A6741]">
-                  <rect x="2" y="6" width="20" height="14" rx="2" stroke="currentColor" strokeWidth="1.5" fill="none"/>
-                  <circle cx="12" cy="13" r="3" stroke="currentColor" strokeWidth="1.5" fill="none"/>
-                  <path d="M16 6L17 4H7L8 6" stroke="currentColor" strokeWidth="1.5" fill="none" strokeLinecap="round"/>
-                </svg>
-              </div>
-              <h3 className="text-2xl mb-4 text-[#4A6741]" style={{ fontFamily: 'Cormorant Garamond, serif' }}>
-                Award-Winning Photography
-              </h3>
-              <p className="text-[#2C2C2C]/70 leading-relaxed text-base">Capture every moment with Lee's expert eye, preserving your memories in timeless imagery.</p>
-            </div>
-          </div>
-          <div className="text-center mt-10 md:mt-12">
-            <Link
-              href="/services"
-              className="inline-block border-2 border-[#4A6741] text-[#4A6741] hover:bg-[#4A6741] hover:text-white px-8 md:px-10 py-3 text-sm uppercase tracking-widest transition-all duration-300"
-            >
-              View All Services
-            </Link>
+          {/* Text Right */}
+          <div style={{ padding: '80px' }} className="service-content">
+            <div className="caption" style={{ marginBottom: '16px' }}>01 / PLANNING</div>
+            <h2 style={{ marginBottom: '24px' }}>Bespoke Wedding Planning</h2>
+            <p style={{ marginBottom: '24px' }}>
+              Regardless of size or budget, we guide you through every detail of planning your perfect Paphos wedding. As an independent planner, we work exclusively for you — no venue bias, no pressure, just your dream day brought to life.
+            </p>
+            <Link href="/services" className="link-sage">Learn More →</Link>
           </div>
         </div>
       </section>
 
-      {/* Testimonial */}
-      <section className="py-16 md:py-32 px-6 bg-[#4A6741] text-white">
-        <div className="max-w-[700px] mx-auto text-center">
-          <p className="text-[22px] italic font-light leading-relaxed mb-6 md:mb-8" style={{ fontFamily: 'Cormorant Garamond, serif' }}>
-            "Vicki and Lee made our dream wedding a reality. Every detail was perfect, from the stunning venue
-            to the breathtaking photos. We couldn't have asked for a better team to guide us through our special day."
+      {/* Service 2: Wedding Photography */}
+      <section style={{ background: '#F5F2EE' }}>
+        <div
+          style={{
+            display: 'grid',
+            gridTemplateColumns: '1fr 1fr',
+            maxWidth: '1280px',
+            margin: '0 auto',
+          }}
+          className="service-row"
+        >
+          {/* Text Left */}
+          <div style={{ padding: '80px' }} className="service-content">
+            <div className="caption" style={{ marginBottom: '16px' }}>02 / PHOTOGRAPHY</div>
+            <h2 style={{ marginBottom: '24px' }}>Award-Winning Photography</h2>
+            <p style={{ marginBottom: '24px' }}>
+              Lee is a multi award-winning Cyprus wedding photographer, capturing raw emotion and timeless moments. With an instinctive eye and decades of experience, he creates images you will treasure forever. View his full portfolio at leesquirrell.net.
+            </p>
+            <a href="https://leesquirrell.net" target="_blank" rel="noopener noreferrer" className="link-sage">
+              View Portfolio →
+            </a>
+          </div>
+          {/* Image Right */}
+          <div style={{ position: 'relative', height: '520px' }} className="service-image">
+            <Image
+              src="https://images.unsplash.com/photo-1537633552985-df8429e8048b?w=800&q=80"
+              alt="Award-Winning Photography"
+              fill
+              style={{ objectFit: 'cover' }}
+            />
+          </div>
+        </div>
+      </section>
+
+      {/* Service 3: Elopements & Ceremonies */}
+      <section style={{ background: '#FEFCF8' }}>
+        <div
+          style={{
+            display: 'grid',
+            gridTemplateColumns: '1fr 1fr',
+            maxWidth: '1280px',
+            margin: '0 auto',
+          }}
+          className="service-row"
+        >
+          {/* Image Left */}
+          <div style={{ position: 'relative', height: '520px' }} className="service-image">
+            <Image
+              src="https://images.unsplash.com/photo-1544124499-58912cbddaad?w=800&q=80"
+              alt="Elopements & Ceremonies"
+              fill
+              style={{ objectFit: 'cover' }}
+            />
+          </div>
+          {/* Text Right */}
+          <div style={{ padding: '80px' }} className="service-content">
+            <div className="caption" style={{ marginBottom: '16px' }}>03 / CEREMONIES</div>
+            <h2 style={{ marginBottom: '24px' }}>Elopements & Symbolic Ceremonies</h2>
+            <p style={{ marginBottom: '24px' }}>
+              From intimate beach elopements to civil ceremonies and symbolic vow renewals — we create deeply personal celebrations for every couple, including same-sex marriages. Our English celebrant ensures every word resonates.
+            </p>
+            <Link href="/services" className="link-sage">Learn More →</Link>
+          </div>
+        </div>
+      </section>
+
+      {/* SECTION 4: GALLERY STRIP */}
+      <section style={{ overflow: 'hidden' }}>
+        <div
+          style={{
+            display: 'flex',
+            width: '100%',
+          }}
+          className="gallery-strip"
+        >
+          <div style={{ position: 'relative', width: '20%', height: '380px', flexShrink: 0 }} className="gallery-item">
+            <Image
+              src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&q=80"
+              alt="Gallery 1"
+              fill
+              style={{ objectFit: 'cover' }}
+            />
+          </div>
+          <div style={{ position: 'relative', width: '20%', height: '380px', flexShrink: 0 }} className="gallery-item">
+            <Image
+              src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=600&q=80"
+              alt="Gallery 2"
+              fill
+              style={{ objectFit: 'cover' }}
+            />
+          </div>
+          <div style={{ position: 'relative', width: '20%', height: '380px', flexShrink: 0 }} className="gallery-item">
+            <Image
+              src="https://images.unsplash.com/photo-1583939003579-730e3918a45a?w=600&q=80"
+              alt="Gallery 3"
+              fill
+              style={{ objectFit: 'cover' }}
+            />
+          </div>
+          <div style={{ position: 'relative', width: '20%', height: '380px', flexShrink: 0 }} className="gallery-item">
+            <Image
+              src="https://images.unsplash.com/photo-1478146059778-26028b07395a?w=600&q=80"
+              alt="Gallery 4"
+              fill
+              style={{ objectFit: 'cover' }}
+            />
+          </div>
+          <div style={{ position: 'relative', width: '20%', height: '380px', flexShrink: 0 }} className="gallery-item">
+            <Image
+              src="https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?w=600&q=80"
+              alt="Gallery 5"
+              fill
+              style={{ objectFit: 'cover' }}
+            />
+          </div>
+        </div>
+      </section>
+
+      {/* SECTION 5: TESTIMONIALS */}
+      <section className="section" style={{ background: '#1C1C1C', color: 'white' }}>
+        <div className="container" style={{ maxWidth: '800px', textAlign: 'center' }}>
+          <div className="caption" style={{ color: 'white', marginBottom: '40px' }}>
+            WHAT OUR COUPLES SAY
+          </div>
+          <div
+            style={{
+              fontSize: '80px',
+              fontFamily: 'var(--font-cormorant)',
+              color: '#C4956A',
+              lineHeight: '1',
+              marginBottom: '24px',
+            }}
+          >
+            &ldquo;
+          </div>
+          <p
+            style={{
+              fontFamily: 'var(--font-cormorant)',
+              fontStyle: 'italic',
+              fontSize: '26px',
+              lineHeight: '1.6',
+              marginBottom: '24px',
+            }}
+          >
+            Having Vicki plan your wedding is a no brainer! From the very beginning she was so informative and had everything under control. She took all the stress out of the day — I wish I could do it all over again.
           </p>
-          <p className="text-xs uppercase tracking-widest text-white/80" style={{ fontVariant: 'small-caps' }}>— Sarah & Michael, 2025</p>
+          <p
+            className="caption"
+            style={{
+              color: 'white',
+              marginBottom: '60px',
+            }}
+          >
+            — SIAN & JACK, 2024
+          </p>
+
+          <div className="decorative-line" style={{ margin: '60px auto' }} />
+
+          <p
+            style={{
+              fontFamily: 'var(--font-cormorant)',
+              fontStyle: 'italic',
+              fontSize: '26px',
+              lineHeight: '1.6',
+              marginBottom: '24px',
+            }}
+          >
+            We always wanted to get married abroad, but didn't know where to start. Thanks to Vicki, she made our dream come true!
+          </p>
+          <p className="caption" style={{ color: 'white' }}>
+            — LEANNE & FRANKIE, 2024
+          </p>
         </div>
       </section>
 
-      {/* Call to Action */}
+      {/* SECTION 6: WHY PAPHOS */}
+      <section className="section" style={{ background: '#FEFCF8' }}>
+        <div className="container">
+          <div
+            style={{
+              display: 'grid',
+              gridTemplateColumns: '3fr 2fr',
+              gap: '80px',
+              alignItems: 'center',
+            }}
+            className="why-paphos"
+          >
+            {/* Left Column - Text */}
+            <div>
+              <div className="eyebrow" style={{ marginBottom: '16px' }}>THE DESTINATION</div>
+              <h2 style={{ marginBottom: '32px' }}>Why Paphos?</h2>
+              <p style={{ marginBottom: '32px' }}>
+                A UNESCO World Heritage Site with over 300 days of sunshine annually. From golden sandy beaches and rugged coastlines to elegant beachfront resorts and historic landmarks — Paphos offers the most breathtaking backdrop for your wedding day.
+              </p>
+              <ul style={{ listStyle: 'none', padding: 0 }}>
+                <li style={{ display: 'flex', alignItems: 'center', marginBottom: '16px' }}>
+                  <span style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#7D9B76', marginRight: '12px' }} />
+                  <span>300+ days of sunshine annually</span>
+                </li>
+                <li style={{ display: 'flex', alignItems: 'center', marginBottom: '16px' }}>
+                  <span style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#7D9B76', marginRight: '12px' }} />
+                  <span>UNESCO World Heritage Site</span>
+                </li>
+                <li style={{ display: 'flex', alignItems: 'center', marginBottom: '16px' }}>
+                  <span style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#7D9B76', marginRight: '12px' }} />
+                  <span>Stunning venues: beach, vineyard, historic</span>
+                </li>
+                <li style={{ display: 'flex', alignItems: 'center', marginBottom: '16px' }}>
+                  <span style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#7D9B76', marginRight: '12px' }} />
+                  <span>Easy access from across Europe</span>
+                </li>
+              </ul>
+            </div>
+
+            {/* Right Column - Image */}
+            <div style={{ position: 'relative', height: '500px' }}>
+              <Image
+                src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80"
+                alt="Paphos Cyprus"
+                fill
+                style={{ objectFit: 'cover' }}
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* SECTION 7: CTA BANNER */}
       <section
-        className="py-16 md:py-32 px-6 relative text-white"
         style={{
-          backgroundImage: 'linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.6)), url(https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=1920&q=80)',
+          position: 'relative',
+          backgroundImage: 'url("https://images.unsplash.com/photo-1519225421980-715cb0215aed?w=1920&q=80")',
           backgroundSize: 'cover',
           backgroundPosition: 'center',
-          backgroundRepeat: 'no-repeat'
+          padding: '140px 0',
         }}
       >
-        <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-4xl md:text-5xl lg:text-6xl mb-6 md:mb-8" style={{ fontFamily: 'Cormorant Garamond, serif' }}>
-            Let's Create Your Perfect Day
-          </h2>
-          <p className="text-base md:text-lg mb-8 md:mb-10 leading-relaxed">
-            Ready to start planning your Cyprus wedding? Get in touch with us today for a complimentary consultation.
+        <div
+          style={{
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            background: 'rgba(0,0,0,0.55)',
+          }}
+        />
+        <div className="container" style={{ position: 'relative', textAlign: 'center', color: 'white' }}>
+          <h2 style={{ color: 'white', marginBottom: '24px' }}>Let's Plan Your Perfect Day</h2>
+          <p style={{ marginBottom: '32px', fontSize: '17px', color: 'white', opacity: 0.95 }}>
+            Schedule a free, no-pressure consultation with Vicki. We would love to hear your story.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link
-              href="/contact"
-              className="inline-block bg-[#C4956A] hover:bg-[#B38558] text-white px-8 md:px-10 py-3 md:py-4 text-xs md:text-sm uppercase tracking-widest transition-all duration-300"
-            >
-              Contact Us
-            </Link>
-            <Link
-              href="/venues"
-              className="inline-block border-2 border-white text-white hover:bg-white hover:text-[#2C2C2C] px-8 md:px-10 py-3 md:py-4 text-xs md:text-sm uppercase tracking-widest transition-all duration-300"
-            >
-              Explore Venues
-            </Link>
-          </div>
+          <Link href="/contact">
+            <button className="btn-white">Get in Touch</button>
+          </Link>
         </div>
       </section>
+
+      {/* FOOTER */}
+      <footer style={{ background: '#1C1C1C', color: 'white', padding: '80px 0 40px' }}>
+        <div className="container">
+          <div
+            style={{
+              display: 'grid',
+              gridTemplateColumns: '1fr 1fr',
+              gap: '80px',
+              marginBottom: '60px',
+            }}
+            className="footer-grid"
+          >
+            {/* Left Column */}
+            <div>
+              <h3
+                style={{
+                  fontFamily: 'var(--font-cormorant)',
+                  fontSize: '22px',
+                  color: 'white',
+                  marginBottom: '8px',
+                }}
+              >
+                Tie the Knot Cyprus
+              </h3>
+              <p style={{ fontFamily: 'var(--font-raleway)', fontSize: '13px', color: '#8A8A8A' }}>
+                Bespoke Wedding Planning, Paphos
+              </p>
+            </div>
+
+            {/* Right Column */}
+            <div>
+              <div style={{ marginBottom: '24px' }}>
+                <h4
+                  style={{
+                    fontFamily: 'var(--font-raleway)',
+                    fontSize: '11px',
+                    letterSpacing: '0.1em',
+                    textTransform: 'uppercase',
+                    marginBottom: '16px',
+                    fontWeight: 500,
+                  }}
+                >
+                  Navigation
+                </h4>
+                <div style={{ display: 'flex', gap: '24px', flexWrap: 'wrap' }}>
+                  <Link href="/" style={{ fontFamily: 'var(--font-raleway)', fontSize: '13px', letterSpacing: '0.1em', textTransform: 'uppercase' }}>
+                    Home
+                  </Link>
+                  <Link href="/about" style={{ fontFamily: 'var(--font-raleway)', fontSize: '13px', letterSpacing: '0.1em', textTransform: 'uppercase' }}>
+                    About
+                  </Link>
+                  <Link href="/services" style={{ fontFamily: 'var(--font-raleway)', fontSize: '13px', letterSpacing: '0.1em', textTransform: 'uppercase' }}>
+                    Services
+                  </Link>
+                  <Link href="/venues" style={{ fontFamily: 'var(--font-raleway)', fontSize: '13px', letterSpacing: '0.1em', textTransform: 'uppercase' }}>
+                    Venues
+                  </Link>
+                  <Link href="/contact" style={{ fontFamily: 'var(--font-raleway)', fontSize: '13px', letterSpacing: '0.1em', textTransform: 'uppercase' }}>
+                    Contact
+                  </Link>
+                </div>
+              </div>
+
+              <div>
+                <h4
+                  style={{
+                    fontFamily: 'var(--font-raleway)',
+                    fontSize: '11px',
+                    letterSpacing: '0.1em',
+                    textTransform: 'uppercase',
+                    marginBottom: '12px',
+                    fontWeight: 500,
+                  }}
+                >
+                  Contact
+                </h4>
+                <p style={{ fontFamily: 'var(--font-raleway)', fontSize: '13px', color: '#8A8A8A', lineHeight: '1.8' }}>
+                  info@tietheknotcyprus.net<br />
+                  +357 99 123456<br />
+                  Paphos, Cyprus
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div style={{ textAlign: 'center', paddingTop: '40px', borderTop: '1px solid rgba(255,255,255,0.1)' }}>
+            <p style={{ fontFamily: 'var(--font-raleway)', fontSize: '12px', color: '#8A8A8A' }}>
+              © 2025 Tie the Knot Cyprus. All rights reserved.
+            </p>
+          </div>
+        </div>
+      </footer>
+
+      {/* RESPONSIVE STYLES */}
+      <style jsx>{`
+        @media (max-width: 768px) {
+          .service-row {
+            grid-template-columns: 1fr !important;
+          }
+          .service-image {
+            height: 300px !important;
+          }
+          .service-content {
+            padding: 40px 24px !important;
+          }
+          .gallery-strip {
+            overflow-x: scroll;
+          }
+          .gallery-item {
+            width: 80vw !important;
+          }
+          .why-paphos {
+            grid-template-columns: 1fr !important;
+          }
+          .footer-grid {
+            grid-template-columns: 1fr !important;
+            gap: 40px !important;
+          }
+        }
+      `}</style>
     </main>
   );
 }

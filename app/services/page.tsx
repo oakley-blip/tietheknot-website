@@ -1,181 +1,307 @@
-import Image from "next/image";
-import type { Metadata } from "next";
+'use client';
 
-export const metadata: Metadata = {
-  title: "Services - Tie the Knot Cyprus",
-  description: "Comprehensive wedding planning services in Paphos: bespoke planning, venue finding, award-winning photography, and day coordination.",
-};
+import Image from 'next/image';
+import Link from 'next/link';
 
 export default function Services() {
-  const services = [
-    {
-      title: 'Bespoke Wedding Planning',
-      description: 'Our signature service covers every aspect of your wedding from initial concept to final execution.',
-      features: [
-        'Personalized consultation and vision development',
-        'Complete design concept and styling',
-        'Vendor selection and coordination',
-        'Budget management and timeline creation',
-        'Unlimited planning meetings',
-        'On-site coordination on your wedding day',
-      ],
-      image: 'https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?w=1200&q=80',
-    },
-    {
-      title: 'Venue Finding',
-      description: 'Access our exclusive network of the most spectacular wedding venues across Paphos and Cyprus.',
-      features: [
-        'Curated venue recommendations based on your style',
-        'Site visits and tours with expert guidance',
-        'Contract negotiation and review',
-        'Coordination with venue management',
-        'Layout planning and design consultation',
-        'Logistics coordination for venue access',
-      ],
-      image: 'https://images.unsplash.com/photo-1519167758481-83f29da8c2d0?w=1200&q=80',
-    },
-    {
-      title: 'Award-Winning Photography',
-      description: 'Lee captures every precious moment with his distinctive artistic style and storytelling approach.',
-      features: [
-        'Full-day coverage from preparation to reception',
-        'Pre-wedding consultation and location scouting',
-        'Natural, editorial-style photography',
-        'High-resolution digital images',
-        'Online gallery with sharing capabilities',
-        'Print-ready files and custom albums available',
-      ],
-      image: 'https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=1200&q=80',
-    },
-    {
-      title: 'Day Coordination',
-      description: 'Perfect for couples who prefer to plan themselves but want expert coordination on the big day.',
-      features: [
-        'Final planning meeting 30 days before',
-        'Timeline creation and vendor coordination',
-        'Rehearsal attendance and direction',
-        'Full-day coordination and management',
-        'Problem-solving and last-minute adjustments',
-        'Family and wedding party assistance',
-      ],
-      image: 'https://images.unsplash.com/photo-1530023367847-a683933f4172?w=1200&q=80',
-    },
-  ];
-
   return (
-    <main className="pt-20">
-      {/* Hero */}
-      <section className="relative h-[60vh] flex items-center justify-center text-white">
-        <Image
-          src="https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?w=1920&q=80"
-          alt="Wedding table setting"
-          fill
-          className="object-cover"
+    <main>
+      {/* HERO */}
+      <section
+        style={{
+          position: 'relative',
+          height: '50vh',
+          minHeight: '400px',
+          backgroundImage: 'url("https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?w=1920&q=80")',
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+        }}
+      >
+        <div
+          style={{
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            background: 'linear-gradient(to bottom, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.5) 100%)',
+          }}
         />
-        <div className="absolute inset-0 bg-black/40" />
-        <div className="relative z-10 text-center px-6">
-          <h1 className="text-6xl md:text-7xl mb-4 font-light" style={{ fontFamily: 'Cormorant Garamond, serif' }}>
-            Our Services
-          </h1>
-          <p className="text-xl font-light tracking-wide">Comprehensive wedding planning tailored to you</p>
+        <div
+          style={{
+            position: 'absolute',
+            top: '50%',
+            left: '50%',
+            transform: 'translate(-50%, -50%)',
+            textAlign: 'center',
+            color: 'white',
+            width: '100%',
+            padding: '0 24px',
+          }}
+        >
+          <div className="eyebrow" style={{ color: 'white', marginBottom: '16px' }}>
+            WHAT WE OFFER
+          </div>
+          <h1 style={{ color: 'white' }}>Our Services</h1>
         </div>
       </section>
 
-      {/* Services */}
-      {services.map((service, index) => (
-        <section
-          key={service.title}
-          className={`py-24 px-6 ${index % 2 === 0 ? 'bg-white' : 'bg-[#FAF7F2]'}`}
+      {/* SERVICE 1: BESPOKE PLANNING */}
+      <section style={{ background: '#FEFCF8' }}>
+        <div
+          style={{
+            display: 'grid',
+            gridTemplateColumns: '1fr 1fr',
+            maxWidth: '1280px',
+            margin: '0 auto',
+          }}
+          className="service-row"
         >
-          <div className="max-w-6xl mx-auto">
-            <div className={`grid md:grid-cols-2 gap-12 items-center ${index % 2 === 1 ? 'md:flex-row-reverse' : ''}`}>
-              <div className={index % 2 === 1 ? 'md:order-2' : ''}>
-                <h2 className="text-4xl md:text-5xl mb-6 text-[#2C2C2C]" style={{ fontFamily: 'Cormorant Garamond, serif' }}>
-                  {service.title}
-                </h2>
-                <p className="text-lg leading-relaxed text-[#2C2C2C]/80 mb-8">
-                  {service.description}
-                </p>
-                <ul className="space-y-3">
-                  {service.features.map((feature) => (
-                    <li key={feature} className="flex items-start gap-3 text-[#2C2C2C]/80">
-                      <span className="text-[#4A6741] text-xl mt-1">✓</span>
-                      <span>{feature}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-              <div className={`relative h-[500px] ${index % 2 === 1 ? 'md:order-1' : ''}`}>
-                <Image
-                  src={service.image}
-                  alt={service.title}
-                  fill
-                  className="object-cover"
-                />
-              </div>
-            </div>
+          <div style={{ position: 'relative', height: '600px' }} className="service-image">
+            <Image
+              src="https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?w=800&q=80"
+              alt="Bespoke Wedding Planning"
+              fill
+              style={{ objectFit: 'cover' }}
+            />
           </div>
-        </section>
-      ))}
+          <div style={{ padding: '80px' }} className="service-content">
+            <div className="caption" style={{ marginBottom: '16px' }}>01 / PLANNING</div>
+            <h2 style={{ marginBottom: '24px' }}>Bespoke Wedding Planning</h2>
+            <p style={{ marginBottom: '20px' }}>
+              Every wedding we plan is completely bespoke — designed around you, your vision, and your budget. As an independent planner, Vicki works exclusively for you with no venue bias or hidden commissions.
+            </p>
+            <p style={{ marginBottom: '20px' }}>
+              From initial consultation to your send-off, we handle every detail: venue sourcing, supplier coordination, timeline management, design concept, budget tracking, and on-the-day coordination.
+            </p>
+            <p style={{ marginBottom: '20px' }}>
+              Whether you're planning an intimate gathering of 20 or a grand celebration of 200, we bring the same level of care, creativity, and professionalism.
+            </p>
+            <div className="decorative-line" />
+            <ul style={{ listStyle: 'none', padding: 0, marginTop: '24px' }}>
+              <li style={{ display: 'flex', alignItems: 'flex-start', marginBottom: '12px' }}>
+                <span style={{ color: '#7D9B76', marginRight: '8px' }}>✓</span>
+                <span>Full planning service from start to finish</span>
+              </li>
+              <li style={{ display: 'flex', alignItems: 'flex-start', marginBottom: '12px' }}>
+                <span style={{ color: '#7D9B76', marginRight: '8px' }}>✓</span>
+                <span>Independent, unbiased venue recommendations</span>
+              </li>
+              <li style={{ display: 'flex', alignItems: 'flex-start', marginBottom: '12px' }}>
+                <span style={{ color: '#7D9B76', marginRight: '8px' }}>✓</span>
+                <span>Vetted supplier network across Cyprus</span>
+              </li>
+              <li style={{ display: 'flex', alignItems: 'flex-start', marginBottom: '12px' }}>
+                <span style={{ color: '#7D9B76', marginRight: '8px' }}>✓</span>
+                <span>On-the-day coordination and timeline management</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
 
-      {/* Packages */}
-      <section className="py-24 px-6 bg-[#4A6741] text-white">
-        <div className="max-w-6xl mx-auto text-center">
-          <h2 className="text-5xl mb-8" style={{ fontFamily: 'Cormorant Garamond, serif' }}>
-            Flexible Packages
-          </h2>
-          <p className="text-lg mb-12 text-white/90 max-w-3xl mx-auto leading-relaxed">
-            We understand that every couple is unique. Our services can be customized and combined to create the
-            perfect package for your needs and budget. Whether you need full planning or just day-of coordination,
-            we're here to help.
-          </p>
-          <div className="grid md:grid-cols-3 gap-8">
-            {[
-              {
-                name: 'Essentials',
-                description: 'Perfect for intimate weddings',
-                includes: 'Day coordination + venue finding',
-              },
-              {
-                name: 'Complete',
-                description: 'Our most popular package',
-                includes: 'Full planning + photography',
-              },
-              {
-                name: 'Ultimate',
-                description: 'The complete experience',
-                includes: 'Everything included + extras',
-              },
-            ].map((pkg) => (
-              <div key={pkg.name} className="border-2 border-white/30 p-8 hover:border-white/60 transition-all">
-                <h3 className="text-3xl mb-3" style={{ fontFamily: 'Cormorant Garamond, serif' }}>
-                  {pkg.name}
-                </h3>
-                <p className="text-white/80 mb-4">{pkg.description}</p>
-                <p className="text-sm text-white/70">{pkg.includes}</p>
-              </div>
-            ))}
+      {/* SERVICE 2: PHOTOGRAPHY */}
+      <section style={{ background: '#F5F2EE' }}>
+        <div
+          style={{
+            display: 'grid',
+            gridTemplateColumns: '1fr 1fr',
+            maxWidth: '1280px',
+            margin: '0 auto',
+          }}
+          className="service-row"
+        >
+          <div style={{ padding: '80px' }} className="service-content">
+            <div className="caption" style={{ marginBottom: '16px' }}>02 / PHOTOGRAPHY</div>
+            <h2 style={{ marginBottom: '24px' }}>Award-Winning Photography</h2>
+            <p style={{ marginBottom: '20px' }}>
+              Lee's photography is all about capturing authentic moments — the stolen glances, the uncontrollable laughter, the quiet tears of joy.
+            </p>
+            <p style={{ marginBottom: '20px' }}>
+              With a documentary-style approach combined with beautifully composed portraits, Lee creates a visual story of your day that feels both timeless and true to life.
+            </p>
+            <p style={{ marginBottom: '20px' }}>
+              His work has been featured in international wedding publications and earned multiple awards, but what matters most is creating imagery that moves you every time you look at it.
+            </p>
+            <p style={{ marginBottom: '20px' }}>
+              Full-day coverage, albums, and prints available. View the complete portfolio at{' '}
+              <a href="https://leesquirrell.net" target="_blank" rel="noopener noreferrer" className="link-sage">
+                leesquirrell.net
+              </a>
+            </p>
+            <div className="decorative-line" />
+            <ul style={{ listStyle: 'none', padding: 0, marginTop: '24px' }}>
+              <li style={{ display: 'flex', alignItems: 'flex-start', marginBottom: '12px' }}>
+                <span style={{ color: '#7D9B76', marginRight: '8px' }}>✓</span>
+                <span>Documentary and portrait photography</span>
+              </li>
+              <li style={{ display: 'flex', alignItems: 'flex-start', marginBottom: '12px' }}>
+                <span style={{ color: '#7D9B76', marginRight: '8px' }}>✓</span>
+                <span>Multi-award-winning photographer</span>
+              </li>
+              <li style={{ display: 'flex', alignItems: 'flex-start', marginBottom: '12px' }}>
+                <span style={{ color: '#7D9B76', marginRight: '8px' }}>✓</span>
+                <span>Full-day coverage with second shooter available</span>
+              </li>
+              <li style={{ display: 'flex', alignItems: 'flex-start', marginBottom: '12px' }}>
+                <span style={{ color: '#7D9B76', marginRight: '8px' }}>✓</span>
+                <span>Professional albums and prints</span>
+              </li>
+            </ul>
+          </div>
+          <div style={{ position: 'relative', height: '600px' }} className="service-image">
+            <Image
+              src="https://images.unsplash.com/photo-1537633552985-df8429e8048b?w=800&q=80"
+              alt="Wedding Photography"
+              fill
+              style={{ objectFit: 'cover' }}
+            />
+          </div>
+        </div>
+      </section>
+
+      {/* SERVICE 3: ELOPEMENTS */}
+      <section style={{ background: '#FEFCF8' }}>
+        <div
+          style={{
+            display: 'grid',
+            gridTemplateColumns: '1fr 1fr',
+            maxWidth: '1280px',
+            margin: '0 auto',
+          }}
+          className="service-row"
+        >
+          <div style={{ position: 'relative', height: '600px' }} className="service-image">
+            <Image
+              src="https://images.unsplash.com/photo-1544124499-58912cbddaad?w=800&q=80"
+              alt="Elopements"
+              fill
+              style={{ objectFit: 'cover' }}
+            />
+          </div>
+          <div style={{ padding: '80px' }} className="service-content">
+            <div className="caption" style={{ marginBottom: '16px' }}>03 / ELOPEMENTS</div>
+            <h2 style={{ marginBottom: '24px' }}>Intimate Elopements</h2>
+            <p style={{ marginBottom: '20px' }}>
+              For couples who want something more intimate, our elopement packages offer the perfect solution. Exchange vows on a secluded beach, in a hidden vineyard, or atop a clifftop overlooking the Mediterranean.
+            </p>
+            <p style={{ marginBottom: '20px' }}>
+              We handle all the logistics — location permits, celebrant, flowers, photography — so you can focus entirely on each other.
+            </p>
+            <p style={{ marginBottom: '20px' }}>
+              Elopements can be just the two of you, or include a handful of your closest loved ones. We create deeply personal ceremonies that feel authentic and meaningful.
+            </p>
+            <div className="decorative-line" />
+            <ul style={{ listStyle: 'none', padding: 0, marginTop: '24px' }}>
+              <li style={{ display: 'flex', alignItems: 'flex-start', marginBottom: '12px' }}>
+                <span style={{ color: '#7D9B76', marginRight: '8px' }}>✓</span>
+                <span>Intimate ceremonies in stunning locations</span>
+              </li>
+              <li style={{ display: 'flex', alignItems: 'flex-start', marginBottom: '12px' }}>
+                <span style={{ color: '#7D9B76', marginRight: '8px' }}>✓</span>
+                <span>All permits and legal requirements handled</span>
+              </li>
+              <li style={{ display: 'flex', alignItems: 'flex-start', marginBottom: '12px' }}>
+                <span style={{ color: '#7D9B76', marginRight: '8px' }}>✓</span>
+                <span>English-speaking celebrant</span>
+              </li>
+              <li style={{ display: 'flex', alignItems: 'flex-start', marginBottom: '12px' }}>
+                <span style={{ color: '#7D9B76', marginRight: '8px' }}>✓</span>
+                <span>Photography and florals included</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      {/* SERVICE 4: SYMBOLIC CEREMONIES */}
+      <section style={{ background: '#F5F2EE' }}>
+        <div
+          style={{
+            display: 'grid',
+            gridTemplateColumns: '1fr 1fr',
+            maxWidth: '1280px',
+            margin: '0 auto',
+          }}
+          className="service-row"
+        >
+          <div style={{ padding: '80px' }} className="service-content">
+            <div className="caption" style={{ marginBottom: '16px' }}>04 / CEREMONIES</div>
+            <h2 style={{ marginBottom: '24px' }}>Symbolic & Vow Renewals</h2>
+            <p style={{ marginBottom: '20px' }}>
+              Already legally married but want to celebrate in Cyprus? Our symbolic ceremonies and vow renewal services create beautiful, meaningful celebrations without the legal paperwork.
+            </p>
+            <p style={{ marginBottom: '20px' }}>
+              We welcome all couples — including same-sex marriages — and work with experienced English-speaking celebrants who craft personalized ceremonies that reflect your relationship and values.
+            </p>
+            <p style={{ marginBottom: '20px' }}>
+              From beachfront sunsets to elegant garden settings, we'll help you create a ceremony as unique as your love story.
+            </p>
+            <div className="decorative-line" />
+            <ul style={{ listStyle: 'none', padding: 0, marginTop: '24px' }}>
+              <li style={{ display: 'flex', alignItems: 'flex-start', marginBottom: '12px' }}>
+                <span style={{ color: '#7D9B76', marginRight: '8px' }}>✓</span>
+                <span>Personalized ceremony scripts</span>
+              </li>
+              <li style={{ display: 'flex', alignItems: 'flex-start', marginBottom: '12px' }}>
+                <span style={{ color: '#7D9B76', marginRight: '8px' }}>✓</span>
+                <span>All couples welcome, including same-sex marriages</span>
+              </li>
+              <li style={{ display: 'flex', alignItems: 'flex-start', marginBottom: '12px' }}>
+                <span style={{ color: '#7D9B76', marginRight: '8px' }}>✓</span>
+                <span>Experienced English celebrant</span>
+              </li>
+              <li style={{ display: 'flex', alignItems: 'flex-start', marginBottom: '12px' }}>
+                <span style={{ color: '#7D9B76', marginRight: '8px' }}>✓</span>
+                <span>Vow renewal ceremonies available</span>
+              </li>
+            </ul>
+          </div>
+          <div style={{ position: 'relative', height: '600px' }} className="service-image">
+            <Image
+              src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?w=800&q=80"
+              alt="Symbolic Ceremonies"
+              fill
+              style={{ objectFit: 'cover' }}
+            />
           </div>
         </div>
       </section>
 
       {/* CTA */}
-      <section className="py-24 px-6 bg-white">
-        <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-5xl mb-8 text-[#2C2C2C]" style={{ fontFamily: 'Cormorant Garamond, serif' }}>
-            Let's Discuss Your Wedding
-          </h2>
-          <p className="text-lg mb-10 text-[#2C2C2C]/80 leading-relaxed">
-            Schedule a complimentary consultation to discuss which services are right for you.
+      <section
+        style={{
+          background: '#1C1C1C',
+          padding: '100px 24px',
+          textAlign: 'center',
+          color: 'white',
+        }}
+      >
+        <div className="container" style={{ maxWidth: '700px' }}>
+          <h2 style={{ color: 'white', marginBottom: '24px' }}>Let's Create Your Perfect Day</h2>
+          <p style={{ marginBottom: '32px', color: 'white', opacity: 0.95 }}>
+            Get in touch to discuss your vision and receive a personalized quote.
           </p>
-          <a
-            href="/contact"
-            className="inline-block bg-[#C4956A] hover:bg-[#B38558] text-white px-10 py-4 text-sm uppercase tracking-widest transition-all duration-300"
-          >
-            Contact Us Today
-          </a>
+          <Link href="/contact">
+            <button className="btn-white">Schedule a Consultation</button>
+          </Link>
         </div>
       </section>
+
+      {/* RESPONSIVE STYLES */}
+      <style jsx>{`
+        @media (max-width: 768px) {
+          .service-row {
+            grid-template-columns: 1fr !important;
+          }
+          .service-image {
+            height: 300px !important;
+          }
+          .service-content {
+            padding: 40px 24px !important;
+          }
+        }
+      `}</style>
     </main>
   );
 }
