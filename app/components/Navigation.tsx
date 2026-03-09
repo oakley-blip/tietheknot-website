@@ -7,6 +7,7 @@ import { useEffect, useState } from 'react';
 export default function Navigation() {
   const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -34,7 +35,9 @@ export default function Navigation() {
         <Link href="/" className="text-2xl font-light tracking-wide" style={{ fontFamily: 'Cormorant Garamond, serif' }}>
           <span className={scrolled ? 'text-[#2C2C2C]' : 'text-white'}>Tie the Knot Cyprus</span>
         </Link>
-        <ul className="flex gap-8">
+
+        {/* Desktop Navigation */}
+        <ul className="hidden md:flex gap-8">
           {links.map((link) => (
             <li key={link.href}>
               <Link
@@ -50,6 +53,53 @@ export default function Navigation() {
             </li>
           ))}
         </ul>
+
+        {/* Mobile Hamburger Button */}
+        <button
+          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+          className="md:hidden z-50 w-8 h-8 flex flex-col justify-center items-center"
+          aria-label="Toggle menu"
+        >
+          <span
+            className={`block w-6 h-0.5 mb-1.5 transition-all duration-300 ${
+              scrolled ? 'bg-[#2C2C2C]' : 'bg-white'
+            } ${mobileMenuOpen ? 'rotate-45 translate-y-2' : ''}`}
+          />
+          <span
+            className={`block w-6 h-0.5 mb-1.5 transition-all duration-300 ${
+              scrolled ? 'bg-[#2C2C2C]' : 'bg-white'
+            } ${mobileMenuOpen ? 'opacity-0' : ''}`}
+          />
+          <span
+            className={`block w-6 h-0.5 transition-all duration-300 ${
+              scrolled ? 'bg-[#2C2C2C]' : 'bg-white'
+            } ${mobileMenuOpen ? '-rotate-45 -translate-y-2' : ''}`}
+          />
+        </button>
+
+        {/* Mobile Menu */}
+        <div
+          className={`md:hidden fixed top-0 right-0 w-full h-screen bg-white transform transition-transform duration-300 ${
+            mobileMenuOpen ? 'translate-x-0' : 'translate-x-full'
+          }`}
+        >
+          <ul className="flex flex-col items-center justify-center h-full gap-8">
+            {links.map((link) => (
+              <li key={link.href}>
+                <Link
+                  href={link.href}
+                  onClick={() => setMobileMenuOpen(false)}
+                  className={`text-2xl uppercase tracking-wider transition-all duration-200 hover:text-[#C4956A] ${
+                    pathname === link.href ? 'text-[#C4956A] font-medium' : 'text-[#2C2C2C]'
+                  }`}
+                  style={{ fontFamily: 'Cormorant Garamond, serif' }}
+                >
+                  {link.label}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
       </div>
     </nav>
   );
